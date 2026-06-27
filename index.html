@@ -9,6 +9,7 @@
 </head>
 <body>
   <div id="app">
+    <!-- Tela de login -->
     <div id="login-screen">
       <h2>Saúde Uber</h2>
       <input type="email" id="email" placeholder="E-mail">
@@ -16,13 +17,31 @@
       <button id="btn-login">Entrar</button>
       <button id="btn-cadastrar">Cadastrar</button>
     </div>
+
+    <!-- Tela de cadastro (escolher tipo) -->
+    <div id="cadastro-screen" style="display:none">
+      <h3>Cadastro</h3>
+      <input type="text" id="nome-cadastro" placeholder="Seu nome">
+      <select id="tipo-cadastro">
+        <option value="acompanhante">Acompanhante</option>
+        <option value="tecnico">Técnico de Enfermagem</option>
+      </select>
+      <input type="text" id="especialidade-cadastro" placeholder="Especialidade (se técnico)" style="display:none">
+      <button id="btn-finalizar-cadastro">Finalizar cadastro</button>
+    </div>
+
+    <!-- Tela principal (home) -->
     <div id="home-screen" style="display:none">
       <h3>Bem-vindo, <span id="nome-usuario"></span></h3>
+      <div id="tipo-usuario"></div>
       <button id="btn-solicitar">Solicitar Técnico</button>
-      <button id="btn-minhas-solicitacoes">Minhas Solicitações</button>
+      <button id="btn-ver-solicitacoes">Ver Solicitações</button>
+      <button id="btn-perfil">Meu Perfil</button>
       <button id="btn-sair">Sair</button>
       <div id="lista-solicitacoes"></div>
     </div>
+
+    <!-- Tela de solicitação -->
     <div id="solicitar-screen" style="display:none">
       <h3>Nova Solicitação</h3>
       <input type="text" id="endereco" placeholder="Endereço">
@@ -31,15 +50,62 @@
       <button id="btn-enviar-solicitacao">Enviar</button>
       <button id="btn-voltar">Voltar</button>
     </div>
-    <div id="minhas-solicitacoes-screen" style="display:none">
-      <h3>Minhas Solicitações</h3>
-      <div id="lista-minhas-solicitacoes"></div>
-      <button id="btn-voltar-home">Voltar</button>
+
+    <!-- Tela de lista de solicitações (para técnicos e acompanhantes) -->
+    <div id="lista-screen" style="display:none">
+      <h3>Solicitações</h3>
+      <div id="filtros">
+        <button class="filtro" data-status="pendente">Pendentes</button>
+        <button class="filtro" data-status="aceita">Aceitas</button>
+        <button class="filtro" data-status="finalizada">Finalizadas</button>
+        <button class="filtro" data-status="todos">Todos</button>
+      </div>
+      <div id="lista-completa"></div>
+      <button id="btn-voltar-lista">Voltar</button>
+    </div>
+
+    <!-- Tela de chat -->
+    <div id="chat-screen" style="display:none">
+      <h3>Chat</h3>
+      <div id="mensagens-chat"></div>
+      <input type="text" id="msg-input" placeholder="Digite sua mensagem...">
+      <button id="btn-enviar-msg">Enviar</button>
+      <button id="btn-fechar-chat">Fechar</button>
+    </div>
+
+    <!-- Tela de avaliação -->
+    <div id="avaliacao-screen" style="display:none">
+      <h3>Avaliar</h3>
+      <p>Avalie o técnico:</p>
+      <div id="estrelas">
+        <span data-nota="1">⭐</span>
+        <span data-nota="2">⭐</span>
+        <span data-nota="3">⭐</span>
+        <span data-nota="4">⭐</span>
+        <span data-nota="5">⭐</span>
+      </div>
+      <textarea id="comentario-avaliacao" placeholder="Comentário (opcional)"></textarea>
+      <button id="btn-enviar-avaliacao">Enviar avaliação</button>
+      <button id="btn-fechar-avaliacao">Fechar</button>
+    </div>
+
+    <!-- Tela de perfil -->
+    <div id="perfil-screen" style="display:none">
+      <h3>Meu Perfil</h3>
+      <p>Nome: <span id="perfil-nome"></span></p>
+      <p>Tipo: <span id="perfil-tipo"></span></p>
+      <p>E-mail: <span id="perfil-email"></span></p>
+      <input type="text" id="editar-nome" placeholder="Novo nome">
+      <button id="btn-salvar-nome">Salvar nome</button>
+      <button id="btn-fechar-perfil">Fechar</button>
     </div>
   </div>
+
+  <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging-compat.js"></script>
   <script src="firebase-init.js"></script>
   <script src="app.js"></script>
 </body>
