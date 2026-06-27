@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saúde Uber</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <div id="login-screen">
+      <h2>Saúde Uber</h2>
+      <input type="email" id="email" placeholder="E-mail">
+      <input type="password" id="senha" placeholder="Senha">
+      <button id="btn-login">Entrar</button>
+      <button id="btn-cadastrar">Cadastrar</button>
+    </div>
+    <div id="home-screen" style="display:none">
+      <h3>Bem-vindo, <span id="nome-usuario"></span></h3>
+      <button id="btn-solicitar">Solicitar Técnico</button>
+      <button id="btn-minhas-solicitacoes">Minhas Solicitações</button>
+      <button id="btn-sair">Sair</button>
+      <div id="lista-solicitacoes"></div>
+    </div>
+    <div id="solicitar-screen" style="display:none">
+      <h3>Nova Solicitação</h3>
+      <input type="text" id="endereco" placeholder="Endereço">
+      <input type="datetime-local" id="datahora">
+      <input type="text" id="especialidade" placeholder="Especialidade (ex: curativo)">
+      <button id="btn-enviar-solicitacao">Enviar</button>
+      <button id="btn-voltar">Voltar</button>
+    </div>
+    <div id="minhas-solicitacoes-screen" style="display:none">
+      <h3>Minhas Solicitações</h3>
+      <div id="lista-minhas-solicitacoes"></div>
+      <button id="btn-voltar-home">Voltar</button>
+    </div>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script src="firebase-init.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
